@@ -1,7 +1,6 @@
 <template>
   <div v-if="user">
     <mt-header title="我的"></mt-header>
-    <mt-cell title="所属学校" :value="user.school_name"></mt-cell>
     <mt-cell title="姓名" :value="user.name"></mt-cell>
     <mt-cell title="手机号" :value="user.phone"></mt-cell>
     <mt-cell title="Email" :value="user.email"></mt-cell>

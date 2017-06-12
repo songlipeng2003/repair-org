@@ -7,7 +7,7 @@
     </mt-header>
 
     <mt-cell title="名称" :value="repair.name"></mt-cell>
-    <mt-cell title="密码" :value="repair.code"></mt-cell>
+    <mt-cell title="编码" :value="repair.code"></mt-cell>
     <mt-cell title="品牌" :value="repair.brand"></mt-cell>
     <mt-cell title="型号" :value="repair.model"></mt-cell>
     <mt-cell title="位置" :value="repair.position"></mt-cell>

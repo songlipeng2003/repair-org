@@ -7,9 +7,6 @@ import AnnouncementViewPage from '../pages/AnnouncementViewPage'
 import RepairPage from '../pages/RepairPage'
 import RepairViewPage from '../pages/RepairViewPage'
 import DevicePage from '../pages/DevicePage'
-import DeviceRepairPage from '../pages/DeviceRepairPage'
-import OpenDeviceRepairPage from '../pages/OpenDeviceRepairPage'
-import OpenRepairSuccessPage from '../pages/OpenRepairSuccessPage'
 import DeviceViewPage from '../pages/DeviceViewPage'
 import MyPage from '../pages/MyPage'
 import LoginPage from '../pages/LoginPage'
@@ -55,18 +52,6 @@ export default new Router({
     {
       path: '/device/:id/update',
       component: DeviceFormPage
-    },
-    {
-      path: '/device/:id/repair',
-      component: DeviceRepairPage
-    },
-    {
-      path: '/open/device/:id/repair',
-      component: OpenDeviceRepairPage
-    },
-    {
-      path: '/open/repair/success',
-      component: OpenRepairSuccessPage
     },
     {
       path: '/my',
