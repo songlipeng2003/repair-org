@@ -9,6 +9,8 @@
     <mt-cell title="项目数量" :value="data.projectCount"></mt-cell>
     <mt-cell title="设备数量" :value="data.deviceCount"></mt-cell>
     <mt-cell title="保修单数量" :value="data.repairCount"></mt-cell>
+    <mt-cell title="学校数量" :value="data.schoolCount"></mt-cell>
+    <mt-cell title="服务站数量" :value="data.serviceStationCount"></mt-cell>
 
     <page-footer active="tab-home"></page-footer>
   </div>
