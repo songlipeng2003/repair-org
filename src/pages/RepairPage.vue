@@ -1,11 +1,28 @@
 <template>
   <div>
     <mt-header title="保修"></mt-header>
+    <mt-navbar v-model="status">
+      <mt-tab-item id="0">全部</mt-tab-item>
+      <mt-tab-item id="10">已报修</mt-tab-item>
+      <mt-tab-item id="20">已派单</mt-tab-item>
+      <mt-tab-item id="40">已维修</mt-tab-item>
+      <mt-tab-item id="50">已评价</mt-tab-item>
+    </mt-navbar>
 
     <div v-infinite-scroll="loadMore" infinite-scroll-disabled="disableLoadMore" infinite-scroll-distance="10" infinite-scroll-listen-for-event="refreshData">
       <mt-loadmore :top-method="refresh" ref="loadmore">
-        <mt-cell :title="repair.code" :label="'发布时间：' + filterDate(repair.created_at)" v-for="repair in repairs" :key="repair.id" :to="'repair/' + repair.id" is-link>
-        </mt-cell>
+        <div v-for="repair in repairs" :key="repair.id" class="card">
+          <router-link :to="'repair/' + repair.id">
+            编号:{{repair.code}}<br/>
+            设备:{{repair.device.name}}<br/>
+            项目:{{repair.project_name}}<br/>
+            状态:{{repair.status_name}}<br/>
+            保修时间:{{repair.created_at.substring(0, 16)}}<br/>
+          </router-link>
+        </div>
+        <div class="empty" v-if="repairs.length==0">
+          暂无数据
+        </div>
       </mt-loadmore>
     </div>
 
@@ -35,12 +52,20 @@ export default {
       page: 1,
       allLoaded: false,
       repairs: [],
-      loading: false
+      loading: false,
+      status: '0'
     }
   },
   computed: {
     disableLoadMore: function () {
       return this.loading || this.allLoaded
+    }
+  },
+  watch: {
+    status: function (newValue) {
+      this.loading = true
+      this.page = 1
+      this.loadData(true)
     }
   },
   methods: {
@@ -58,7 +83,8 @@ export default {
     },
     loadData (clear = false) {
       Indicator.open()
-      Repair.query({page: this.page}).then((response) => {
+      let query = {page: this.page, status: this.status}
+      Repair.query(query).then((response) => {
         if (clear) {
           this.repairs = response.body
         } else {
@@ -85,6 +111,7 @@ export default {
     }
   },
   beforeMount () {
+    this.loadMore()
   }
 }
 </script>

@@ -16,7 +16,7 @@
     <mt-cell title="创建时间" :value="device.created_at"></mt-cell>
     <mt-cell title="备注" :value="device.remark"></mt-cell>
 
-    <mt-button type="primary" size="large" @click.native="update">编辑</mt-button>
+    <!-- <mt-button type="primary" size="large" @click.native="update">编辑</mt-button> -->
   </div>
 </template>
 

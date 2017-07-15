@@ -5,9 +5,6 @@
         <mt-button icon="back"></mt-button>
       </router-link>
     </mt-header>
-
-    <mt-radio title="项目" v-model="device.project_id" :options="projects">
-    </mt-radio>
     <mt-field label="名称" placeholder="请输入名称" type="text" v-model="device.name"></mt-field>
     <mt-field label="品牌" placeholder="请输入品牌" type="text" v-model="device.brand"></mt-field>
     <mt-field label="型号" placeholder="请输入型号" type="text" v-model="device.model"></mt-field>

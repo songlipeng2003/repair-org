@@ -1,15 +1,21 @@
 <template>
   <div>
     <mt-header title="设备">
-      <router-link to="/device/create" slot="right">
-        <mt-button ><i slot="icon" class="iconfont icon-message"></i></mt-button>
-      </router-link>
     </mt-header>
 
     <div v-infinite-scroll="loadMore" infinite-scroll-disabled="disableLoadMore" infinite-scroll-distance="10" infinite-scroll-listen-for-event="refreshData">
       <mt-loadmore :top-method="refresh" ref="loadmore">
-        <mt-cell :title="device.name" :label="device.brand + device.model + ' '" v-for="device in devices" :key="device.id" :to="'device/' + device.id" is-link>
-        </mt-cell>
+        <div v-for="device in devices" :key="device.id" class="card">
+          <router-link :to="'device/' + device.id">
+            设备名:{{device.name}}<br/>
+            位置:{{device.position ? device.position : '无'}}<br/>
+            品牌:{{device.brand ? device.brand : '无'}} 型号:{{device.model ? device.model : '无'}}<br/>
+            项目:{{device.project_name}}<br/>
+          </router-link>
+        </div>
+        <div class="empty" v-if="devices.length==0">
+          暂无数据
+        </div>
       </mt-loadmore>
     </div>
 
@@ -89,6 +95,7 @@ export default {
     }
   },
   beforeMount () {
+    this.loadMore()
   }
 }
 </script>
